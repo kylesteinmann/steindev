@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Kyle Steinmann's professional resume showcasing projects, skills, and experience.">
+  <meta name="keywords" content="Kyle Steinmann, resume, software engineer, projects, skills, experience">
+  <meta name="author" content="Kyle Steinmann">
+  <title>{% block title %}Resume | Kyle Steinmann{% endblock %}</title>
+  {% block extra_css %}
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #121212;
+      color: #ffffff;
+      overflow-x: hidden;
+    }
+
+    .container {
+      width: 80%;
+      margin: auto;
+      overflow: hidden;
+      padding: 20px 0;
+    }
+
+    header {
+      background: #1e1e1e;
+      color: #ffffff;
+      padding: 20px 0;
+      border-bottom: #007bff 3px solid;
+      position: fixed;
+      width: 100%;
+      z-index: 1000;
+    }
+
+    header a {
+      color: #ffffff;
+      text-decoration: none;
+      text-transform: uppercase;
+      font-size: 32px;
+    }
+
+    header ul {
+      padding: 0;
+      list-style: none;
+      display: flex;
+      justify-content: center;
+    }
+
+    header li {
+      padding: 0 20px;
+    }
+
+    header #branding {
+      margin-right: auto;
+      padding-left: 20px;
+    }
+
+    header #branding h1 {
+      margin: 0;
+      font-size: 24px;
+    }
+
+    header nav {
+      margin-top: 10px;
+    }
+
+    header .highlight,
+    header .current a {
+      color: #007bff;
+      font-weight: bold;
+    }
+
+    header a:hover {
+      color: #007bff;
+      font-weight: bold;
+    }
+
+    #showcase {
+      height: 100vh;
+      background: url('media/home_background.webp') no-repeat center center/cover;
+      position: relative;
+    }
+
+    #showcase::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, .5);
+      z-index: 1;
+    }
+
+    #showcase .content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+    }
+
+    #showcase h1 {
+      font-size: 55px;
+      margin-bottom: 3px;
+    }
+
+    #showcase p {
+      margin-top: 3px;
+      font-size: 40px;
+    }
+
+    .profile-pic {
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      border: 5px solid #007bff;
+      margin-bottom: 20px;
+    }
+
+    #main {
+      padding: 100px 20px 20px 20px;
+      /* Adjusted padding to account for the fixed navbar */
+      background: #1e1e1e;
+    }
+
+    .section {
+      margin: 40px 0;
+    }
+
+    .section h2 {
+      margin-top: 0;
+      text-align: center;
+      font-size: 32px;
+      color: #007bff;
+    }
+
+    .section #projects {
+      margin: 100px;
+    }
+
+    .project,
+    .skill,
+    .experience,
+    .education {
+      background: #2a2a2a;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .project:hover,
+    .skill:hover,
+    .experience:hover,
+    .education:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+    }
+
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .project img {
+      max-width: 100%;
+      border-radius: 8px;
+    }
+
+    footer {
+      padding: 20px;
+      margin-top: 20px;
+      color: #ffffff;
+      background-color: #121212;
+      text-align: center;
+    }
+
+    .project-link {
+      display: block;
+      margin-top: 10px;
+      color: #007bff;
+      text-decoration: none;
+      text-align: right;
+      font-weight: bold;
+    }
+
+    .project-link:hover {
+      text-decoration: underline;
+    }
+
+    .skill-icon {
+      margin-right: 10px;
+    }
+
+    .contact-info {
+      text-align: center;
+    }
+
+    .contact-info p {
+      margin: 10px 0;
+    }
+
+    .contact-info a {
+      color: #007bff;
+      text-decoration: none;
+    }
+
+    .contact-info a:hover {
+      text-decoration: underline;
+    }
+
+    @media (min-width: 768px) {
+
+      .project,
+      .skill,
+      .experience,
+      .education {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .project>div,
+      .skill>div,
+      .experience>div,
+      .education>div {
+        flex: 1;
+        margin-right: 10px;
+      }
+
+      .project>div:last-child,
+      .skill>div:last-child,
+      .experience>div:last-child,
+      .education>div:last-child {
+        margin-right: 0;
+      }
+    }
+
+    @media (max-width: 767px) {
+
+      .project>div,
+      .skill>div,
+      .experience>div,
+      .education>div {
+        margin-bottom: 10px;
+      }
+    }
+  </style>
+  {% endblock %}
+</head>
+
+<body>
+  {% include 'navbar.html' %}
+  <div id="main">
+    {% block content %}{% endblock %}
+  </div>
+  <footer>
+    <p>&copy; 2024 Kyle Steinmann. All rights reserved.</p>
+  </footer>
+  {% block extra_javascript %}
+  <script>
+    document.querySelectorAll('.project-link').forEach(link => {
+      link.addEventListener('click', event => {
+        alert('You are about to visit an external project page.');
+      });
+    });
+  </script>
+  {% endblock %}
+</body>
+
+</html>
